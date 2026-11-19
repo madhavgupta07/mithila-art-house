@@ -256,11 +256,11 @@ Set these Vercel project environment variables:
 
 - `MONGODB_URI` — a cloud MongoDB URI. A local `mongodb://127.0.0.1` address will not work from Vercel.
 - `ADMIN_API_KEY` — shared key for `/admin` and the admin API routes.
-- `COUPONS` — optional JSON array; set here to the WELCOME10 preview code.
+- `COUPONS` — optional JSON array containing the sample `WELCOME10` code.
 - `CLIENT_ORIGIN` — the deployed origin, for example `https://mithila-art-house.vercel.app`.
 - Optional Razorpay **test** keys: `RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET`, `RAZORPAY_WEBHOOK_SECRET` and `VITE_RAZORPAY_KEY_ID`.
 
-`VITE_API_URL=/api` is supplied by `vercel.json` at build time, so the built storefront calls the same-origin API. Payments remain test-mode only and are verified on the server.
+The production site is available at https://mithila-art-house.vercel.app. Its cloud MongoDB catalogue has been seeded with the 16 sample products. `VITE_API_URL=/api` is supplied by `vercel.json` at build time, so the built storefront calls the same-origin API. Payments remain test-mode only and are verified on the server.
 
 ---
 
