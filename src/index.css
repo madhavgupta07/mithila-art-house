@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ivory font-sans text-ink antialiased;
+  }
+
+  ::selection {
+    @apply bg-vermilion text-ivory;
+  }
+
+  :focus-visible {
+    outline: 2px solid #c13a24;
+    outline-offset: 3px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  .paper-texture {
+    background-image: url('/images/paper-grain.svg');
+    background-repeat: repeat;
+  }
+
+  .border-mithila {
+    border: 1px solid rgba(32, 27, 23, 0.12);
+    outline: 1px solid rgba(32, 27, 23, 0.06);
+    outline-offset: 5px;
+  }
+
+  .nav-underline {
+    position: relative;
+  }
+
+  .nav-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #c13a24;
+    transition: width 250ms ease;
+  }
+
+  .nav-underline:hover::after {
+    width: 100%;
+  }
+
+  .link-underline {
+    @apply border-b border-vermilion/40 pb-0.5 transition-colors hover:border-vermilion hover:text-vermilion;
+  }
+}
+
+/* Swiper pagination, toned to match the gallery */
+.gallery-swiper .swiper-pagination-bullet {
+  width: 6px;
+  height: 6px;
+  border-radius: 0;
+  background: #3a322b;
+  opacity: 0.25;
+}
+.gallery-swiper .swiper-pagination-bullet-active {
+  background: #c13a24;
+  opacity: 1;
+  width: 20px;
+}
+
+/* Elegant, restrained scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f4ebd9;
+}
+::-webkit-scrollbar-thumb {
+  background: #c9bda6;
+  border: 3px solid #f4ebd9;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b45c36;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
