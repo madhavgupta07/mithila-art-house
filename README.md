@@ -248,6 +248,22 @@ The generator uses only the Python standard library.
 
 ---
 
+## Vercel deployment
+
+The GitHub repo is connected to Vercel, so pushes to `main` build and deploy automatically. `vercel.json` builds Vite into `dist/` and routes `/api/*` to the catch-all serverless function in `api/[...path].js`, which runs the existing Express app and keeps a cached MongoDB connection.
+
+Set these Vercel project environment variables:
+
+- `MONGODB_URI` — a cloud MongoDB URI. A local `mongodb://127.0.0.1` address will not work from Vercel.
+- `ADMIN_API_KEY` — shared key for `/admin` and the admin API routes.
+- `COUPONS` — optional JSON array; set here to the WELCOME10 preview code.
+- `CLIENT_ORIGIN` — the deployed origin, for example `https://mithila-art-house.vercel.app`.
+- Optional Razorpay **test** keys: `RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET`, `RAZORPAY_WEBHOOK_SECRET` and `VITE_RAZORPAY_KEY_ID`.
+
+`VITE_API_URL=/api` is supplied by `vercel.json` at build time, so the built storefront calls the same-origin API. Payments remain test-mode only and are verified on the server.
+
+---
+
 ## Before launching a real store
 
 1. Replace product SVGs with authorised photographs of actual artworks, each with verified provenance and artist consent.
